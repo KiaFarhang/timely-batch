@@ -1,10 +1,8 @@
 package com.kiafarhang.timely.batch.models.nyt;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class NYTPayload {
-    private List<NYTStory> results;
+  private List<NYTStory> results;
 
-    @JsonProperty("num_results")
-    private int numberOfResults;
+  @JsonProperty("num_results")
+  private int numberOfResults;
 }
