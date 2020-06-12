@@ -5,8 +5,10 @@ import com.kiafarhang.timely.batch.models.nyt.NYTStory;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+@Component
 public class NYTClient {
 
   @Autowired private RestTemplate restTemplate;
