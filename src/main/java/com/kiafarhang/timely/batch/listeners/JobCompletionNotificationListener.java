@@ -23,7 +23,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
   public void afterJob(JobExecution jobExecution) {
     if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
       jdbcTemplate
-          .query("SELECT title FROM nyt", (rs, row) -> new NYTStory())
+          .query("SELECT title FROM nyt_stories", (rs, row) -> new NYTStory())
           .forEach(story -> log.info("Found " + story + "in the DB"));
     }
   }

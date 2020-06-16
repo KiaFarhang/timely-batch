@@ -29,6 +29,9 @@ public class TimelyBatchConfiguration {
 
   @Autowired private NYTStoryReader reader;
 
+  private final String WRITER_INSERT_QUERY =
+      "INSERT INTO nyt_stories (title, updated_date) VALUES (:title, :updatedDate)";
+
   @Bean
   public RestTemplate restTemplate(RestTemplateBuilder builder) {
     return builder.build();
@@ -43,7 +46,7 @@ public class TimelyBatchConfiguration {
   public JdbcBatchItemWriter<NYTStory> writer(DataSource dataSource) {
     return new JdbcBatchItemWriterBuilder<NYTStory>()
         .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-        .sql("INSERT INTO nyt (title) VALUES (:title)")
+        .sql(WRITER_INSERT_QUERY)
         .dataSource(dataSource)
         .build();
   }
