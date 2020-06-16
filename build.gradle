@@ -54,6 +54,7 @@ test {
 def jacocoIgnore = [
 	'**/models/**',
 	'**/configuration/**',
+	'**/listeners/**',
 	'**/TimelyBatchApplication.class'
 ]
 
