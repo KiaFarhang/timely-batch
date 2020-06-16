@@ -1,10 +1,9 @@
 package com.kiafarhang.timely.batch.configuration;
 
-import javax.sql.DataSource;
-
 import com.kiafarhang.timely.batch.listeners.JobCompletionNotificationListener;
 import com.kiafarhang.timely.batch.models.nyt.NYTStory;
 import com.kiafarhang.timely.batch.readers.NYTStoryReader;
+import javax.sql.DataSource;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -43,10 +42,10 @@ public class TimelyBatchConfiguration {
   @Bean
   public JdbcBatchItemWriter<NYTStory> writer(DataSource dataSource) {
     return new JdbcBatchItemWriterBuilder<NYTStory>()
-    .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-    .sql("INSERT INTO nyt (title) VALUES (:title)")
-    .dataSource(dataSource)
-    .build();
+        .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
+        .sql("INSERT INTO nyt (title) VALUES (:title)")
+        .dataSource(dataSource)
+        .build();
   }
 
   @Bean
