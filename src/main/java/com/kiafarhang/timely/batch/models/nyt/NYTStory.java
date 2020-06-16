@@ -2,7 +2,8 @@ package com.kiafarhang.timely.batch.models.nyt;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Date;
+
+import java.time.ZonedDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,14 +32,14 @@ public class NYTStory {
   private String source;
 
   @JsonProperty("updated_date")
-  private Date updatedDate;
+  private ZonedDateTime updatedDate;
 
   @JsonProperty("created_date")
-  private Date createdDate;
+  private ZonedDateTime createdDate;
 
   @JsonProperty("published_date")
-  private Date publishedDate;
+  private ZonedDateTime publishedDate;
 
   @JsonProperty("first_published_date")
-  private Date firstPublishedDate;
+  private ZonedDateTime firstPublishedDate;
 }
