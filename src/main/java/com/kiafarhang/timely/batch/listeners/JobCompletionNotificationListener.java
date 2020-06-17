@@ -1,6 +1,6 @@
 package com.kiafarhang.timely.batch.listeners;
 
-import com.kiafarhang.timely.batch.models.nyt.NYTStory;
+import com.kiafarhang.timely.batch.rowmappers.NYTStoryRowMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
@@ -23,7 +23,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
   public void afterJob(JobExecution jobExecution) {
     if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
       jdbcTemplate
-          .query("SELECT title FROM nyt_stories", (rs, row) -> new NYTStory())
+          .query("SELECT * FROM nyt_stories", new NYTStoryRowMapper())
           .forEach(story -> log.info("Found " + story + "in the DB"));
     }
   }

@@ -30,7 +30,7 @@ public class TimelyBatchConfiguration {
   @Autowired private NYTStoryReader reader;
 
   private final String WRITER_INSERT_QUERY =
-      "INSERT INTO nyt_stories (title, updated_date) VALUES (:title, :updatedDate)";
+      "INSERT INTO nyt_stories (section, subsection, title, abstract, story_url, byline, item_type, source, updated_date, created_date, published_date, first_published_date) VALUES (:section, :subsection, :title, :storyAbstract, :url, :byline, :itemType, :source, :updatedDate, :createdDate, :publishedDate, :firstPublishedDate)";
 
   @Bean
   public RestTemplate restTemplate(RestTemplateBuilder builder) {
