@@ -124,5 +124,13 @@ public class NYTStoryRowMapperTests {
   }
 
   @Test
-  public void mapRow_mapsFirstPublishedDateColumn_toFirstPublishedDateProperty() throws Exception {}
+  public void mapRow_mapsFirstPublishedDateColumn_toFirstPublishedDateProperty() throws Exception {
+    final ZonedDateTime expected = ZonedDateTime.now();
+    doReturn(expected)
+        .when(resultSet)
+        .getObject(
+            ArgumentMatchers.eq("first_published_date"), ArgumentMatchers.eq(ZonedDateTime.class));
+    final NYTStory result = mapper.mapRow(resultSet, ROW_NUMBER);
+    assertEquals(expected, result.getFirstPublishedDate());
+  }
 }
