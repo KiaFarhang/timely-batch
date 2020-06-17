@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.ZonedDateTime;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(includeFieldNames = true)
