@@ -102,4 +102,27 @@ public class NYTStoryRowMapperTests {
     final NYTStory result = mapper.mapRow(resultSet, ROW_NUMBER);
     assertEquals(expected, result.getUpdatedDate());
   }
+
+  @Test
+  public void mapRow_mapsCreatedDateColumn_toCreatedDateProperty() throws Exception {
+    final ZonedDateTime expected = ZonedDateTime.now();
+    doReturn(expected)
+        .when(resultSet)
+        .getObject(ArgumentMatchers.eq("created_date"), ArgumentMatchers.eq(ZonedDateTime.class));
+    final NYTStory result = mapper.mapRow(resultSet, ROW_NUMBER);
+    assertEquals(expected, result.getCreatedDate());
+  }
+
+  @Test
+  public void mapRow_mapsPublishedDateColumn_toPublishedDateProperty() throws Exception {
+    final ZonedDateTime expected = ZonedDateTime.now();
+    doReturn(expected)
+        .when(resultSet)
+        .getObject(ArgumentMatchers.eq("published_date"), ArgumentMatchers.eq(ZonedDateTime.class));
+    final NYTStory result = mapper.mapRow(resultSet, ROW_NUMBER);
+    assertEquals(expected, result.getPublishedDate());
+  }
+
+  @Test
+  public void mapRow_mapsFirstPublishedDateColumn_toFirstPublishedDateProperty() throws Exception {}
 }

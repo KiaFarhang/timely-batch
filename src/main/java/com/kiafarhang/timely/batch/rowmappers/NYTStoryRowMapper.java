@@ -19,6 +19,11 @@ public class NYTStoryRowMapper implements RowMapper<NYTStory> {
     final String itemType = resultSet.getString("item_type");
     final String source = resultSet.getString("source");
     final ZonedDateTime updatedDate = resultSet.getObject("updated_date", ZonedDateTime.class);
+    final ZonedDateTime createdDate = resultSet.getObject("created_date", ZonedDateTime.class);
+    final ZonedDateTime publishedDate = resultSet.getObject("published_date", ZonedDateTime.class);
+    final ZonedDateTime firstPublishedDate =
+        resultSet.getObject("first_published_date", ZonedDateTime.class);
+
     return new NYTStory(
         section,
         subsection,
@@ -29,8 +34,8 @@ public class NYTStoryRowMapper implements RowMapper<NYTStory> {
         itemType,
         source,
         updatedDate,
-        null,
-        null,
-        null);
+        createdDate,
+        publishedDate,
+        firstPublishedDate);
   }
 }
