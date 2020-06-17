@@ -66,7 +66,7 @@ public class TimelyBatchConfiguration {
   public Step step1(JdbcBatchItemWriter<NYTStory> writer) {
     return stepBuilderFactory
         .get("step1")
-        .<NYTStory, NYTStory>chunk(1)
+        .<NYTStory, NYTStory>chunk(10)
         .reader(reader())
         .writer(writer)
         .build();
