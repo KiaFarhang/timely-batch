@@ -8,22 +8,14 @@ You can run the job at any time on your own machine with the `bootRun` command:
 NYT_API_KEY={your key here} ./gradlew bootRun
 ```
 
-To run with Docker, first build the code to create a JAR file:
+To run with Docker, first add your API keys to the `docker.env` file at the root of this project. Then run the included Shell script to build and run the Docker image:
 
 ```
-./gradlew build
+./run-docker.sh
 ```
 
-Then build the Docker image:
+## Troubleshooting
 
-```
-docker build --build-arg JAR_FILE=build/libs/*.jar -t kiafarhang/timely-batch-docker .
-```
+**Constructor threw exception; nested exception is java.lang.IllegalStateException: Missing NYT_API_KEY environment variable; cannot call New York Times API.**
 
-And add your API keys to the `docker.env` file at the root of this project.
-
-You can now run the image:
-
-```
-docker run -p 8080:8080 --env-file ./docker.env kiafarhang/timely-batch-docker
-```
+You must provide the batch job a New York Times Newswire API key. If running the project via `bootRun`, send your key in on the command line, via the example above. If running via Docker, add your key to the `docker.env` file.
