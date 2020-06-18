@@ -26,5 +26,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
           .query("SELECT * FROM nyt_stories", new NYTStoryRowMapper())
           .forEach(story -> log.info("Wrote following story to the DB:\n" + story));
     }
+
+    System.exit(0);
   }
 }
