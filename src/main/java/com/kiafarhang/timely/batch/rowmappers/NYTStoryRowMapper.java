@@ -24,19 +24,18 @@ public class NYTStoryRowMapper implements RowMapper<NYTStory> {
     final ZonedDateTime firstPublishedDate =
         resultSet.getObject("first_published_date", ZonedDateTime.class);
 
-    return NYTStory.builder()
-        .section(section)
-        .subsection(subsection)
-        .title(title)
-        .storyAbstract(storyAbstract)
-        .url(url)
-        .byline(byline)
-        .itemType(itemType)
-        .source(source)
-        .updatedDate(updatedDate)
-        .createdDate(createdDate)
-        .publishedDate(publishedDate)
-        .firstPublishedDate(firstPublishedDate)
-        .build();
+    return new NYTStory(
+        section,
+        subsection,
+        title,
+        storyAbstract,
+        url,
+        byline,
+        itemType,
+        source,
+        updatedDate,
+        createdDate,
+        publishedDate,
+        firstPublishedDate);
   }
 }
