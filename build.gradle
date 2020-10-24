@@ -1,9 +1,10 @@
 plugins {
 	id 'org.springframework.boot' version '2.2.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id "com.diffplug.gradle.spotless" version "3.27.1"
+	id 'com.diffplug.gradle.spotless' version '3.27.1'
 	id 'java'
 	id 'jacoco'
+	id 'org.jetbrains.kotlin.jvm' version '1.4.10'
 }
 
 group = 'com.kiafarhang.timely'
@@ -35,6 +36,7 @@ dependencies {
 	}
 	testImplementation 'org.springframework.batch:spring-batch-test'
 	testImplementation 'org.mockito:mockito-core:3.3.0'
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 test {
@@ -84,3 +86,13 @@ jacocoTestCoverageVerification {
 
 build.dependsOn spotlessApply
 build.dependsOn jacocoTestCoverageVerification
+compileKotlin {
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
+}
+compileTestKotlin {
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
+}
