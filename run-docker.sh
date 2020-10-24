@@ -10,8 +10,5 @@ rm build/libs/*.jar
 echo -e "Building the project...\n"
 ./gradlew build
 
-echo -e "Building a Docker image to run the code...\n"
-docker build --build-arg JAR_FILE=build/libs/*.jar -t kiafarhang/timely-batch-docker .
-
-echo -e "Running the Docker image...\n"
-docker run -p 8080:8080 --env-file ./docker.env kiafarhang/timely-batch-docker
+echo -e "Running the project...\n"
+docker-compose up --build
